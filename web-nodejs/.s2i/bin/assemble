@@ -13,7 +13,7 @@ rc=$?
 
 if [ $rc -eq 0 ]; then
     echo "After successful assembling"
-    sudo -i && yum install -y zip
+    sudo -i; yum install -y zip
     sed "s/@APP_VERSION@/$APP_VER/g" xebialabs/work/deploymentconfig-web-ui.yaml.bak > xebialabs/work/deploymentconfig-web-ui.yaml
     sed "s/@APP_VERSION@/$APP_VER/g" xebialabs/deployit-manifest.xml.bak > xebialabs/deployit-manifest.xml
     echo "Creating DAR file for XLDEPLOY"
