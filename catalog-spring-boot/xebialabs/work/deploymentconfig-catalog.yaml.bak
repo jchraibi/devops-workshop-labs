@@ -84,5 +84,6 @@ spec:
       from:
         kind: ImageStreamTag
         name: catalog:latest
+        namespace: coolstore-dev
     type: ImageChange
   - type: ConfigChange
