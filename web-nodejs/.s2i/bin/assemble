@@ -2,7 +2,7 @@
 
 echo "------ START BUILD INFO ------- "
 echo $BUILD
-echo $APP_VERSION
+echo $APP_VER
 echo $XLDEPLOY_URL
 echo "------ END BUILD INFO ------------"
 
