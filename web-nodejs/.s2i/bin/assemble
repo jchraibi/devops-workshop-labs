@@ -7,7 +7,8 @@ echo $XLDEPLOY_URL
 echo "------ END BUILD INFO ------------"
 
 echo "Before assembling"
-sudo yum install -y zip
+curl https://github.com/jchraibi/tools/blob/master/zip?raw=true -L -o zip
+chmod a+x zip
 
 /usr/libexec/s2i/assemble
 rc=$?
