@@ -3,6 +3,7 @@
 echo "------ START BUILD INFO ------- "
 echo $BUILD
 echo $APP_VERSION
+echo $XLDEPLOY_URL
 echo "------ END BUILD INFO ------------"
 
 echo "Before assembling"
@@ -12,6 +13,15 @@ rc=$?
 
 if [ $rc -eq 0 ]; then
     echo "After successful assembling"
+    sed "s/@APP_VERSION@/$APP_VER/g" xebialabs/work/deploymentconfig-web-ui.yaml.bak > xebialabs/work/deploymentconfig-web-ui.yaml
+    sed "s/@APP_VERSION@/$APP_VER/g" xebialabs/deployit-manifest.xml.bak > xebialabs/deployit-manifest.xml
+    echo "Creating DAR file for XLDEPLOY"
+    cd xebialabs; zip -r ../xebialabs.dar ./*; cd ..;
+    unzip -l xebialabs.dar
+    echo "Push package to XLDEPLOY"
+    curl -uadmin:admin -X POST -H “content-type:multipart/form-data” $XLDEPLOY_URL/deployit/package/upload/xebialabs.dar -F fileData=@./xebialabs.dar
+
+
 else
     echo "After failed assembling"
 fi
