@@ -6,7 +6,7 @@ echo $APP_VER
 echo $XLDEPLOY_URL
 echo "------ END BUILD INFO ------------"
 
-/usr/bin/openshift-sti-build --loglevel=2
+sh /usr/bin/openshift-sti-build --loglevel=2
 rc=$?
 
 if [ $rc -eq 0 ]; then
