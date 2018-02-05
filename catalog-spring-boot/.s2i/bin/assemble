@@ -8,7 +8,8 @@ echo "------ END BUILD INFO ------------"
 #whereis openshift-sti-build
 
 #sh /usr/bin/openshift-sti-build --loglevel=2
-/usr/libexec/s2i/assemble
+mvn package
+cp target/*.jar /deployments
 rc=$?
 
 if [ $rc -eq 0 ]; then
