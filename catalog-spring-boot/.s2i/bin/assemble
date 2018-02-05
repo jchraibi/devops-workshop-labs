@@ -5,9 +5,10 @@ echo $BUILD
 echo $APP_VER
 echo $XLDEPLOY_URL
 echo "------ END BUILD INFO ------------"
-whereis openshift-sti-build
+#whereis openshift-sti-build
 
-sh /usr/bin/openshift-sti-build --loglevel=2
+#sh /usr/bin/openshift-sti-build --loglevel=2
+/usr/libexec/s2i/assemble
 rc=$?
 
 if [ $rc -eq 0 ]; then
