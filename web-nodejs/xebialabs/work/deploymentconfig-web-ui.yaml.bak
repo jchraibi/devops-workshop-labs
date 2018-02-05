@@ -29,7 +29,7 @@ spec:
           value: gw
         - name: HOSTNAME_HTTP
           value: web-ui:8080
-        image: coolstore-dev/web-ui:@APP_VERSION@
+        image: docker-registry.default.svc:5000/coolstore-dev/web-ui:@APP_VERSION@
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
