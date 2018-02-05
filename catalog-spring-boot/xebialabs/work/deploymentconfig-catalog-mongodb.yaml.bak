@@ -28,13 +28,13 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: MONGODB_USER
-          value: '{{CATALOG_DB_USERNAME}}'
+          value: user
         - name: MONGODB_PASSWORD
-          value: '{{CATALOG_DB_PASSWORD}}'
+          value: password
         - name: MONGODB_DATABASE
           value: catalogdb
         - name: MONGODB_ADMIN_PASSWORD
-          value: '{{CATALOG_DB_PASSWORD}}'
+          value: password
         image: docker-registry.default.svc:5000/coolstore-dev/mongodb:@APP_VERSION@
         imagePullPolicy: IfNotPresent
         livenessProbe:
