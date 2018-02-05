@@ -7,7 +7,7 @@ echo $XLDEPLOY_URL
 echo "------ END BUILD INFO ------------"
 
 echo "Before assembling"
-sudo -i yum install -y zip
+sudo yum install -y zip
 
 /usr/libexec/s2i/assemble
 rc=$?
