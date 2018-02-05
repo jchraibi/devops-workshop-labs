@@ -1518,7 +1518,7 @@ objects:
       # import github repository
       cat <<EOF > /tmp/data.json
       {
-        "clone_addr": "https://github.com/siamaksade/cart-service.git",
+        "clone_addr": "https://github.com/jchraibi/cart-service.git",
         "uid": 1,
         "repo_name": "cart-service"
       }
