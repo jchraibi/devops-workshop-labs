@@ -83,7 +83,7 @@ spec:
       - catalog
       from:
         kind: ImageStreamTag
-        name: catalog:latest
+        name: catalog:@APP_VERSION@
         namespace: coolstore-dev
     type: ImageChange
   - type: ConfigChange
