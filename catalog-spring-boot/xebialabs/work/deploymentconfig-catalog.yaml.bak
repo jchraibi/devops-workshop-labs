@@ -27,9 +27,9 @@ spec:
         - name: JWS_ADMIN_PASSWORD
           value: oktt6yhw
         - name: DB_USERNAME
-          value: '{{CATALOG_DB_USERNAME}}'
+          value: user
         - name: DB_PASSWORD
-          value: '{{CATALOG_DB_PASSWORD}}'
+          value: password
         - name: DB_NAME
           value: catalogdb
         - name: DB_SERVER
