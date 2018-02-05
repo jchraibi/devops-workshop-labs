@@ -74,6 +74,7 @@ spec:
       - web-ui
       from:
         kind: ImageStreamTag
-        name: web-ui:latest
+        name: web-ui:@APP_VERSION@
+        namespace: coolstore-dev
     type: ImageChange
   - type: ConfigChange
