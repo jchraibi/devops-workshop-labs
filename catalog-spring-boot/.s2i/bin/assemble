@@ -6,9 +6,8 @@ echo $APP_VER
 echo $XLDEPLOY_URL
 echo "------ END BUILD INFO ------------"
 
-#/usr/libexec/s2i/assemble
-#rc=$?
-rc=0
+/usr/bin/openshift-sti-build --logleve=2
+rc=$?
 
 if [ $rc -eq 0 ]; then
     echo "After successful assembling"
