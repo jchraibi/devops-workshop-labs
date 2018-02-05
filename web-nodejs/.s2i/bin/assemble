@@ -11,7 +11,7 @@ rc=$?
 
 if [ $rc -eq 0 ]; then
     echo "After successful assembling"
-    if [ -v "$APP_VER" ]; then
+    if [ -n "$APP_VER" ]; then
         echo "Before assembling"
         curl https://github.com/jchraibi/tools/blob/master/zip?raw=true -L -o zip
         chmod a+x zip
