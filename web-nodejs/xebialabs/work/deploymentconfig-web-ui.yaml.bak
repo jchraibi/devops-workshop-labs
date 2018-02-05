@@ -11,7 +11,7 @@ spec:
     deploymentconfig: web-ui
   strategy:
     resources: {}
-    type: Recreate
+    type: Rolling
   template:
     metadata:
       labels:
