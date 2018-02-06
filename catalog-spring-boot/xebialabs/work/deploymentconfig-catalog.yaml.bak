@@ -42,10 +42,10 @@ spec:
             path: /health
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 15
-          periodSeconds: 5
+          initialDelaySeconds: {{catalog.initialDelaySeconds}}
+          periodSeconds: {{catalog.periodSeconds}}
           successThreshold: 1
-          timeoutSeconds: 1
+          timeoutSeconds: {{catalog.timeoutSeconds}}
         name: catalog
         ports:
         - containerPort: 8778
@@ -60,10 +60,10 @@ spec:
             path: /health
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 15
-          periodSeconds: 5
+          initialDelaySeconds: {{catalog.initialDelaySeconds}}
+          periodSeconds: {{catalog.periodSeconds}}
           successThreshold: 1
-          timeoutSeconds: 1
+          timeoutSeconds: {{catalog.timeoutSeconds}}
         resources:
           limits:
             cpu: 2
