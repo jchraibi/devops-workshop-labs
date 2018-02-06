@@ -35,7 +35,7 @@ spec:
           value: catalogdb
         - name: MONGODB_ADMIN_PASSWORD
           value: {{MONGODB_ADMIN_PASSWORD}}
-        image: {{REGISTRY}}/coolstore-dev/mongodb:@APP_VERSION@
+        image: {{REGISTRY}}/openshift/mongodb:3.2
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
