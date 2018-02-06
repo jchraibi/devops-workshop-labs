@@ -26,7 +26,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: {{REGISTRY}}/coolstore-dev/library/coolstore-gw:latest:@APP_VERSION@
+        image: {{REGISTRY}}/coolstore-dev/coolstore-gw:latest:@APP_VERSION@
         livenessProbe:
           httpGet:
             path: /health
