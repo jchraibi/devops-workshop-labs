@@ -76,6 +76,7 @@ spec:
       - cart
       from:
         kind: ImageStreamTag
-        name: cart:latest
+        name: cart:@APP_VERSION@
+        namespace: coolstore-dev
     type: ImageChange
   - type: ConfigChange
