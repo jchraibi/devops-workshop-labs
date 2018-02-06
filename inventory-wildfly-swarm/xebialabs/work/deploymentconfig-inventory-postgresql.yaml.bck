@@ -27,7 +27,7 @@ spec:
           value: '{{INVENTORY_DB_PASSWORD}}'
         - name: POSTGRESQL_DATABASE
           value: inventorydb
-        image: docker-registry.default.svc:5000/coolstore-dev/postgresql:@APP_VERSION@
+        image: {{REGISTRY}}/coolstore-dev/postgresql:@APP_VERSION@
         imagePullPolicy: Always
         livenessProbe:
           initialDelaySeconds: 30

@@ -34,7 +34,7 @@ spec:
           value: catalogdb
         - name: DB_SERVER
           value: catalog-mongodb
-        image: docker-registry.default.svc:5000/coolstore-dev/catalog:@APP_VERSION@
+        image: {{REGISTRY}}/coolstore-dev/catalog:@APP_VERSION@
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5

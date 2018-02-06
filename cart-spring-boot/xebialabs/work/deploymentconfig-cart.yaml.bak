@@ -26,7 +26,7 @@ spec:
           value: http://catalog:8080
         - name: APPLICATION_MODE
           value: prod
-        image: docker-registry.default.svc:5000/coolstore-dev/cart:@APP_VERSION@
+        image: {{REGISTRY}}/coolstore-dev/cart:@APP_VERSION@
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5

@@ -35,7 +35,7 @@ spec:
           value: catalogdb
         - name: MONGODB_ADMIN_PASSWORD
           value: password
-        image: docker-registry.default.svc:5000/coolstore-dev/mongodb:@APP_VERSION@
+        image: {{REGISTRY}}/coolstore-dev/mongodb:@APP_VERSION@
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
