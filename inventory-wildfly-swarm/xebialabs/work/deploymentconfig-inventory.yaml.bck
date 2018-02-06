@@ -103,6 +103,7 @@ spec:
       - inventory
       from:
         kind: ImageStreamTag
-        name: inventory:latest
+        name: inventory:@APP_VERSION@
+        namespace: coolstore-dev
     type: ImageChange
   - type: ConfigChange
