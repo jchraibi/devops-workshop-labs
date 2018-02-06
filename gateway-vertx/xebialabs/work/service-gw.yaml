@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: coolstore-gw
+    application: coolstore
+    component: coolstore-gw
+    hystrix.enabled: 'true'
+  name: gw
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    deploymentconfig: coolstore-gw

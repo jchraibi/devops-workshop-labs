@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    application: coolstore
+    component: inventory
+  name: inventory-postgresql
+spec:
+  replicas: 1
+  selector:
+    deploymentconfig: inventory-postgresql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        application: coolstore
+        component: inventory
+        deploymentconfig: inventory-postgresql
+      name: inventory-postgresql
+    spec:
+      containers:
+      - env:
+        - name: POSTGRESQL_USER
+          value: {{INVENTORY_DB_USERNAME}}
+        - name: POSTGRESQL_PASSWORD
+          value: {{INVENTORY_DB_PASSWORD}}
+        - name: POSTGRESQL_DATABASE
+          value: inventorydb
+        image: {{REGISTRY}}/coolstore-dev/postgresql:@APP_VERSION@
+        imagePullPolicy: Always
+        livenessProbe:
+          initialDelaySeconds: 30
+          tcpSocket:
+            port: 5432
+          timeoutSeconds: 1
+        name: inventory-postgresql
+        ports:
+        - containerPort: 5432
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -i
+            - -c
+            - psql -h 127.0.0.1 -U $POSTGRESQL_USER -q -d $POSTGRESQL_DATABASE -c
+              'SELECT 1'
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
+        volumeMounts:
+        - mountPath: /var/lib/pgsql/data
+          name: inventory-postgresql-data
+      terminationGracePeriodSeconds: 60
+      volumes:
+      - emptyDir: {}
+        name: inventory-postgresql-data
+  triggers:
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - inventory-postgresql
+      from:
+        kind: ImageStreamTag
+        name: postgresql:latest
+        namespace: openshift
+    type: ImageChange
+  - type: ConfigChange

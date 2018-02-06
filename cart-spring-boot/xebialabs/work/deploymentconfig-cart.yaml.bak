@@ -3,12 +3,12 @@ kind: DeploymentConfig
 metadata:
   labels:
     application: coolstore
-    component: catalog
-  name: catalog
+    component: cart
+  name: cart
 spec:
   replicas: 1
   selector:
-    deploymentconfig: catalog
+    deploymentconfig: cart
   strategy:
     resources: {}
     type: Recreate
@@ -16,25 +16,17 @@ spec:
     metadata:
       labels:
         application: coolstore
-        component: catalog
-        deploymentconfig: catalog
-      name: catalog
+        component: cart
+        deploymentconfig: cart
+      name: cart
     spec:
       containers:
       - env:
-        - name: JWS_ADMIN_USERNAME
-          value: Skq3VtCd
-        - name: JWS_ADMIN_PASSWORD
-          value: oktt6yhw
-        - name: DB_USERNAME
-          value: {{CATALOG_DB_USERNAME}}
-        - name: DB_PASSWORD
-          value: {{CATALOG_DB_PASSWORD}}
-        - name: DB_NAME
-          value: catalogdb
-        - name: DB_SERVER
-          value: catalog-mongodb
-        image: {{REGISTRY}}/coolstore-dev/catalog:@APP_VERSION@
+        - name: CATALOG_ENDPOINT
+          value: http://catalog:8080
+        - name: APPLICATION_MODE
+          value: prod
+        image: {{REGISTRY}}/coolstore-dev/cart:@APP_VERSION@
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
@@ -42,11 +34,11 @@ spec:
             path: /health
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 15
+          initialDelaySeconds: 45
           periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
-        name: catalog
+        name: cart
         ports:
         - containerPort: 8778
           name: jolokia
@@ -54,23 +46,24 @@ spec:
         - containerPort: 8080
           name: http
           protocol: TCP
+        - containerPort: 8443
+          name: https
+          protocol: TCP
         readinessProbe:
-          failureThreshold: 5
+          failureThreshold: 10
           httpGet:
             path: /health
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 15
+          initialDelaySeconds: 45
           periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
         resources:
           limits:
-            cpu: 2
-            memory: 2Gi
+            memory: 1Gi
           requests:
-            cpu: 100m
-            memory: 256Mi
+            memory: 200Mi
         terminationMessagePath: /dev/termination-log
       dnsPolicy: ClusterFirst
       restartPolicy: Always
@@ -80,10 +73,9 @@ spec:
   - imageChangeParams:
       automatic: true
       containerNames:
-      - catalog
+      - cart
       from:
         kind: ImageStreamTag
-        name: catalog:@APP_VERSION@
-        namespace: coolstore-dev
+        name: cart:latest
     type: ImageChange
   - type: ConfigChange
