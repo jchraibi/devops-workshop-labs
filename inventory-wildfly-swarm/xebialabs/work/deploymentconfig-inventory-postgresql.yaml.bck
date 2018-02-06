@@ -27,7 +27,7 @@ spec:
           value: password
         - name: POSTGRESQL_DATABASE
           value: inventorydb
-        image: {{REGISTRY}}/coolstore-dev/postgresql:@APP_VERSION@
+        image: {{REGISTRY}}/openshift/postgresql:latest
         imagePullPolicy: Always
         livenessProbe:
           initialDelaySeconds: 30
