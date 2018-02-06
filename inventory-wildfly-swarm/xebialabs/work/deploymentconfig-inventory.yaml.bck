@@ -39,9 +39,9 @@ spec:
         - name: DB_JNDI
           value: java:jboss/datasources/InventoryDS
         - name: DB_USERNAME
-          value: '{{INVENTORY_DB_USERNAME}}'
+          value: {{INVENTORY_DB_USERNAME}}
         - name: DB_PASSWORD
-          value: '{{INVENTORY_DB_PASSWORD}}'
+          value: {{INVENTORY_DB_PASSWORD}}
         - name: DB_DATABASE
           value: inventorydb
         image: {{REGISTRY}}/coolstore-dev/inventory:@APP_VERSION@

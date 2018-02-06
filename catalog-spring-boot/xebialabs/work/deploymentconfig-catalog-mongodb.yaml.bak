@@ -34,7 +34,7 @@ spec:
         - name: MONGODB_DATABASE
           value: catalogdb
         - name: MONGODB_ADMIN_PASSWORD
-          value: password
+          value: {{MONGODB_ADMIN_PASSWORD}}
         image: {{REGISTRY}}/coolstore-dev/mongodb:@APP_VERSION@
         imagePullPolicy: IfNotPresent
         livenessProbe:
