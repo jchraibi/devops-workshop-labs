@@ -22,9 +22,9 @@ spec:
       containers:
       - env:
         - name: POSTGRESQL_USER
-          value: {{INVENTORY_DB_USERNAME}}
+          value: user
         - name: POSTGRESQL_PASSWORD
-          value: {{INVENTORY_DB_PASSWORD}}
+          value: password
         - name: POSTGRESQL_DATABASE
           value: inventorydb
         image: {{REGISTRY}}/coolstore-dev/postgresql:@APP_VERSION@
