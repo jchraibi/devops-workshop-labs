@@ -55,6 +55,7 @@ spec:
       - coolstore-gw
       from:
         kind: ImageStreamTag
-        name: coolstore-gw:latest
+        name: coolstore-gw:@APP_VERSION@
+        namespace: coolstore-dev
     type: ImageChange
   - type: ConfigChange
